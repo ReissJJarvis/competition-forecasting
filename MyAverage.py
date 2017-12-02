@@ -33,7 +33,7 @@ def fetchresults(event,athleteURL):
     #print (page.status_code)
     soup = BeautifulSoup(page.text, 'html.parser')
     performances = soup.find(id='cphBody_pnlPerformances')
-    print(type(performances))
+    #print(type(performances))
     resultTags = performances.find_all(isresult)
     results = []
     for resultTag in resultTags:
