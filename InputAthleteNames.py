@@ -16,9 +16,9 @@ for x in range(0, int(NumberOfAthletes)):
     AthleteList.append(Athlete)
 #Call 'multipleathletes'
 Results = multipleathletes(Event,AthleteList)
-print(Results[0])
+#print(Results[0])
 print()
-print(Results[1])
+#print(Results[1])
 #for each athlete call predict result
 if int(NumberOfAthletes) != len(Results):
     print('THEY DONT MATCH.....')

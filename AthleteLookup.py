@@ -16,18 +16,28 @@ def fetchathlete(FirstName,SurName,Club):
     '__EVENTVALIDATION': eventvali,
     'ctl00$cphBody$txtSurname': SurName,
     'ctl00$cphBody$txtFirstName': FirstName,
-    'ctl00$cphBody$ctl00$cphBody$txtClub': Club,
+    'ctl00$cphBody$txtClub': Club,
     'ctl00$cphBody$btnLookup': 'Lookup'}
     #print(payload)
-    page2 = requests.post(poweroften, data=payload)
-    #print(page2.status_code)
+    page2 = requests.post(poweroften, data=payload, allow_redirects=False)
+    #print("Status code", page2.status_code, FirstName)
+    #print(page2.text)
     soup2 = BeautifulSoup(page2.text, 'html.parser')
-    searchresults = soup2.find(id='cphBody_dgAthletes') #ID in table of results
-    #print(searchresults)
-    if searchresults is None:
-        athletepage = None
+    if page2.status_code == 200:
+        searchresults = soup2.find(id='cphBody_dgAthletes') #ID in table of results
+        #print(searchresults)
+        if searchresults is None:
+            athletepage = None
+        else:
+            athletepage = searchresults.find_all('tr')[1].contents[8].a['href']
     else:
-        athletepage = searchresults.find_all('tr')[1].contents[8].a['href']
+        searchresults = soup2.find('a') #Anchor tag in the redirect
+        #print(searchresults)
+        if searchresults is None:
+            athletepage = None
+        else:
+            s = searchresults['href']
+            athletepage = s[s.find('/',1,-1)+1:]
     #print(type(performances))
     #resultTags = performances.find_all(isresult)
     #results = []
