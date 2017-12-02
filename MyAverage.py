@@ -27,7 +27,8 @@ def getresult(tag):
     result['date'] = datetime.strptime(tag.contents[11].string, "%d %b %y").date()
     return result
 
-def fetchresults(event):
+def fetchresults(event,athleteURL):
+    poweroften = "http://www.thepowerof10.info/athletes/" + athleteURL
     page = requests.get(poweroften)
     #print (page.status_code)
     soup = BeautifulSoup(page.text, 'html.parser')
@@ -47,14 +48,14 @@ def calculateaverage(results):
         runningtotal = runningtotal + result['performance']
     return runningtotal / len(results)
 
-event = input('Enter the event: ')
-poweroften = "http://www.thepowerof10.info/athletes/profile.aspx?athleteid=537630"
-results = fetchresults(event)
-print(results)
+# event = input('Enter the event: ')
+# poweroften = "http://www.thepowerof10.info/athletes/profile.aspx?athleteid=537630"
+#results = fetchresults(event)
+#print(results)
 
 
-average = calculateaverage(results)
-print(average)
+#average = calculateaverage(results)
+#print(average)
 #    if x.contents[0].name == "td":
 #print(len(lists))
 #print(lists)
