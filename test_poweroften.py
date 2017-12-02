@@ -1,6 +1,6 @@
 import unittest
 from AthleteLookup import fetchathlete
-from MyAverage import fetchresults
+from AthletePerformances import fetchresults
 
 class AthleticsTestCase (unittest.TestCase):
     def test_fetchathlete(self):

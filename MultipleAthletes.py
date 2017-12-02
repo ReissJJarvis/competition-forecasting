@@ -1,5 +1,5 @@
 from AthleteLookup import fetchathlete
-from MyAverage import fetchresults
+from AthletePerformances import fetchresults
 
 def multipleathletes (Event, AthleteList):
     #Figure out how many people are in the lists

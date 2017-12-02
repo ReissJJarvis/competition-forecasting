@@ -41,21 +41,3 @@ def fetchresults(event,athleteURL):
             result = getresult(resultTag)
             results.append(result)
     return results
-
-def calculateaverage(results):
-    runningtotal = 0
-    for result in results:
-        runningtotal = runningtotal + result['performance']
-    return runningtotal / len(results)
-
-# event = input('Enter the event: ')
-# poweroften = "http://www.thepowerof10.info/athletes/profile.aspx?athleteid=537630"
-#results = fetchresults(event)
-#print(results)
-
-
-#average = calculateaverage(results)
-#print(average)
-#    if x.contents[0].name == "td":
-#print(len(lists))
-#print(lists)
