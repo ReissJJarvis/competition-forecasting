@@ -1,0 +1,8 @@
+ls
+cd
+atom .
+
+running test
+python3 -m unittest
+python3 -m unittest TESTNAME
+python3 MODULENAME
