@@ -5,6 +5,8 @@
 import requests
 from bs4 import BeautifulSoup
 from datetime import date, datetime
+from EventUnits import FormatResults
+#from FormattingResults import FormatResults
 
 def isresult(tag):
     if tag.name == "tr" and tag.contents[0].name == "td":
@@ -16,9 +18,10 @@ def isevent(tag, event):
     return tag.contents[0].contents[0] == event
 
 def getresult(tag):
+    #print(tag.contents[1].string)
     result = {}
     result['event'] = tag.contents[0].string
-    result['performance'] = float(tag.contents[1].string)
+    result['performance'] = FormatResults(tag.contents[1].string) #ToDo: not all perfomances are floats
     result['wind'] = tag.contents[3].string
     result['position'] = tag.contents[5].string
     result['heat'] = tag.contents[6].string
@@ -40,4 +43,5 @@ def fetchresults(event,athleteURL):
         if isevent(resultTag, event):
             result = getresult(resultTag)
             results.append(result)
+    #resultinsecs = FormatResults(results, event)
     return results
