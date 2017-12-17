@@ -1,4 +1,7 @@
 from EventUnits import isTimedEvent
+from sklearn import datasets, linear_model
+from datetime import date, datetime
+
 
 def calculateaverage(results):
     runningtotal = 0
@@ -9,8 +12,27 @@ def calculateaverage(results):
     else:
         return round(runningtotal / len(results), 2)
 
+def linearregression(results):
+    Data_X = []
+    Data_Y = []
+    if not results:
+        return 0
+
+    for n in range(0, len(results)):
+        Data_X.append( [ results[n]['date'].toordinal() ] )
+        Data_Y.append(results[n]['performance'])
+
+    #Create linear regression object
+    regr = linear_model.LinearRegression()
+    #Train the model
+    regr.fit(Data_X, Data_Y)
+    #Return prediction
+    return round(regr.predict(date.today().toordinal())[0], 2)
+
 def predictresult(results):
-    return calculateaverage(results)
+    #return calculateaverage(results)
+    return linearregression(results)
+
 
     #Receive list of athletes, results and event
 def rankathletes(athletes, results, event):
@@ -18,7 +40,7 @@ def rankathletes(athletes, results, event):
 
     #Calculate predicted Results for each athlete
     for n in range(0, len(athletes)):
-        athletes[n]['rt'] = round(predictresult(results[n]), 2)
+        athletes[n]['rt'] = predictresult(results[n])
 
         #athletes[n].append({'rt' : predictresult(Results[n])})
 

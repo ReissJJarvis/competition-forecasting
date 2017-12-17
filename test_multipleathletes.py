@@ -28,6 +28,7 @@ class AthleticsTestCase (unittest.TestCase):
 
     }]
 
+    #@unittest.skip("skipping")
     def test_fetchathlete(self):
         result = multipleathletes('400',self.AthleteList)
         self.assertEqual(len(result), len(self.AthleteList))
@@ -41,11 +42,11 @@ class AthleticsTestCase (unittest.TestCase):
         Event = '400'
         Results = multipleathletes(Event, self.AthleteList)
         Prediction = rankathletes(self.AthleteList, Results, Event)
-
         self.assertEqual(len(Prediction), len(self.AthleteList))
         for x in range(0, len(self.AthleteList)-1):
             self.assertTrue(Prediction[x]['rt'] <= Prediction[x+1]['rt'], 'Track results in ascending order.')
 
+    #@unittest.skip("skipping field event")
     def test_fieldprediction(self):
         Event = 'HJ'
         Results = multipleathletes(Event, self.AthleteList)

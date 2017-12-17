@@ -6,3 +6,26 @@ running test
 python3 -m unittest
 python3 -m unittest TESTNAME
 python3 MODULENAME
+
+
+Installing scikit learn.
+
+Reisss-Mac-mini:webscrape Reiss$ pip3 install numpy
+Collecting numpy
+  Downloading numpy-1.13.3-cp36-cp36m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl (4.5MB)
+    100% |████████████████████████████████| 4.6MB 265kB/s
+Installing collected packages: numpy
+Successfully installed numpy-1.13.3
+Reisss-Mac-mini:webscrape Reiss$ pip3 install scipy
+Collecting scipy
+  Downloading scipy-1.0.0-cp36-cp36m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl (16.7MB)
+    100% |████████████████████████████████| 16.7MB 75kB/s
+Requirement already satisfied: numpy>=1.8.2 in /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages (from scipy)
+Installing collected packages: scipy
+pipSuccessfully installed scipy-1.0.0
+Reisss-Mac-mini:webscrape Reiss$ pip3 install -U scikit-learn
+Collecting scikit-learn
+  Downloading scikit_learn-0.19.1-cp36-cp36m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl (7.6MB)
+    100% |████████████████████████████████| 7.6MB 170kB/s
+Installing collected packages: scikit-learn
+Successfully installed scikit-learn-0.19.1
