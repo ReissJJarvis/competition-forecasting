@@ -1,5 +1,5 @@
 from MultipleAthletes import multipleathletes
-from AthleteAnalysis import predictresult
+from AthleteAnalysis import outputpredictedresult
 
 #Input number of races and event
 Event = input('Enter the event: ')
@@ -25,6 +25,4 @@ if int(NumberOfAthletes) != len(Results):
 
 #print a list of names and prediction
 #Return the results
-for n in range(0, int(NumberOfAthletes)):
-    Prediction = predictresult(Results[n])
-    print(AthleteList[n]['fn'] + ' ' + str(round(Prediction,2)))
+Prediction = outputpredictedresult(AthleteList, Results, Event)

@@ -21,7 +21,7 @@ def getresult(tag):
     #print(tag.contents[1].string)
     result = {}
     result['event'] = tag.contents[0].string
-    result['performance'] = FormatResults(tag.contents[1].string) #ToDo: not all perfomances are floats
+    result['performance'] = FormatResults(tag.contents[1].string)
     result['wind'] = tag.contents[3].string
     result['position'] = tag.contents[5].string
     result['heat'] = tag.contents[6].string
