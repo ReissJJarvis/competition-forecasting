@@ -4,7 +4,7 @@
 
 import requests
 from bs4 import BeautifulSoup
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from EventUnits import FormatResults
 #from FormattingResults import FormatResults
 
@@ -30,7 +30,8 @@ def getresult(tag):
     result['date'] = datetime.strptime(tag.contents[11].string, "%d %b %y").date()
     return result
 
-def fetchresults(event,athleteURL):
+def fetchresults(event,athleteURL, NoDays = -1):
+    td = timedelta(days = NoDays)
     poweroften = "http://www.thepowerof10.info/athletes/" + athleteURL
     page = requests.get(poweroften)
     #print (page.status_code)
@@ -40,8 +41,9 @@ def fetchresults(event,athleteURL):
     resultTags = performances.find_all(isresult)
     results = []
     for resultTag in resultTags:
-        if isevent(resultTag, event):
+        if isevent(resultTag, event) and not resultTag.contents[1].string.isalpha(): #Removes DQs and DNFs
             result = getresult(resultTag)
-            results.append(result)
+            if result['date'] > date.today() - td or NoDays == -1:
+                results.append(result)
     #resultinsecs = FormatResults(results, event)
     return results

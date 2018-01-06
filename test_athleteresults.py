@@ -1,6 +1,7 @@
 import unittest
 from EventUnits import FormatResults
 from AthletePerformances import fetchresults
+from datetime import date, datetime, timedelta
 
 class AthleteResultsTestCase (unittest.TestCase):
     def test_my800results(self):
@@ -49,6 +50,16 @@ class AthleteResultsTestCase (unittest.TestCase):
         self.assertEqual(Results[0]['performance'], 5.09)
         self.assertEqual(Results[1]['performance'], 5.05)
         self.assertEqual(Results[2]['performance'], 4.98)
+
+    def test_my400resultswithinyear(self):
+        AthletePageID = 'profile.aspx?athleteid=537630'
+        Event = '400'
+        NoDays = 365
+        Results = fetchresults(Event, AthletePageID, NoDays)
+        #print('Results within a year:' , Results)
+        self.assertIsInstance(Results, list)
+        for x in range(0, len(Results)):
+            self.assertTrue(Results[x]['date'] > date.today() - timedelta(days = NoDays))
 
 
         #Result = '56.28'

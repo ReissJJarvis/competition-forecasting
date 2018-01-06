@@ -12,7 +12,7 @@ def calculateaverage(results):
     else:
         return round(runningtotal / len(results), 2)
 
-def linearregression(results):
+def linearregression(results, pdate = date.today()):
     Data_X = []
     Data_Y = []
     if not results:
@@ -27,7 +27,75 @@ def linearregression(results):
     #Train the model
     regr.fit(Data_X, Data_Y)
     #Return prediction
-    return round(regr.predict(date.today().toordinal())[0], 2)
+    return round(regr.predict(pdate.toordinal())[0], 2)
+
+def ridgeregression(results, pdate = date.today()):
+    Data_X = []
+    Data_Y = []
+    if not results:
+        return 0
+
+    for n in range(0, len(results)):
+        Data_X.append( [ results[n]['date'].toordinal() ] )
+        Data_Y.append(results[n]['performance'])
+
+    #Create linear regression object
+    regr = linear_model.Ridge (alpha = .5)
+    #Train the model
+    regr.fit(Data_X, Data_Y)
+    #Return prediction
+    return round(regr.predict(pdate.toordinal())[0], 2)
+
+def lassoregression(results, pdate = date.today()):
+    Data_X = []
+    Data_Y = []
+    if not results:
+        return 0
+
+    for n in range(0, len(results)):
+        Data_X.append( [ results[n]['date'].toordinal() ] )
+        Data_Y.append(results[n]['performance'])
+
+    #Create linear regression object
+    regr = linear_model.Lasso (alpha = 0.1)
+    #Train the model
+    regr.fit(Data_X, Data_Y)
+    #Return prediction
+    return round(regr.predict(pdate.toordinal())[0], 2)
+
+def lassolarsregression(results, pdate = date.today()):
+    Data_X = []
+    Data_Y = []
+    if not results:
+        return 0
+
+    for n in range(0, len(results)):
+        Data_X.append( [ results[n]['date'].toordinal() ] )
+        Data_Y.append(results[n]['performance'])
+
+    #Create linear regression object
+    regr = linear_model.LassoLars (alpha = 0.1)
+    #Train the model
+    regr.fit(Data_X, Data_Y)
+    #Return prediction
+    return round(regr.predict(pdate.toordinal())[0], 2)
+
+def bayesianregression(results, pdate = date.today()):
+    Data_X = []
+    Data_Y = []
+    if not results:
+        return 0
+
+    for n in range(0, len(results)):
+        Data_X.append( [ results[n]['date'].toordinal() ] )
+        Data_Y.append(results[n]['performance'])
+
+    #Create linear regression object
+    regr = linear_model.BayesianRidge()
+    #Train the model
+    regr.fit(Data_X, Data_Y)
+    #Return prediction
+    return round(regr.predict(pdate.toordinal())[0], 2)
 
 def predictresult(results):
     #return calculateaverage(results)
