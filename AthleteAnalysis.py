@@ -1,6 +1,8 @@
 from EventUnits import isTimedEvent
 from sklearn import datasets, linear_model
 from datetime import date, datetime
+import warnings
+
 
 
 def calculateaverage(results):
@@ -13,6 +15,7 @@ def calculateaverage(results):
         return round(runningtotal / len(results), 2)
 
 def linearregression(results, pdate = date.today()):
+    warnings.filterwarnings(action="ignore", module="scipy", message="^internal gelsd") #Ignore warning message
     Data_X = []
     Data_Y = []
     if not results:

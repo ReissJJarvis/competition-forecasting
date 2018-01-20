@@ -4,6 +4,7 @@ from AthleteAnalysis import rankathletes, ridgeregression, linearregression, las
 from AthletePerformances import fetchresults
 
 
+
 class AthleticsTestCase (unittest.TestCase):
     Athletes = ['276947', '611749', '642991', '596477', '521484', '537630', '377028', '404176', '119822']
 
@@ -84,6 +85,6 @@ class AthleticsTestCase (unittest.TestCase):
             Predictions.append(bayesianregression(OtherResults, MostRecentResult['date']))
             #Check the prediction
             print('Effectiveness:', self.Athletes[x], Predictions, MostRecentResult['performance'], Predictions[0] - MostRecentResult['performance'], MostRecentResult['date'])
-            print()
             print('Distance from true value:', Predictions[0] - MostRecentResult['performance'], Predictions[4] - MostRecentResult['performance'])
+            print()
             #self.assertEqual(Prediction, '50.0')
