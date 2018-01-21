@@ -4,21 +4,23 @@
 <table class="table">
 <thead class="thead-dark">
   <tr>
-    <th scope="col">#</th>
-    <th scope="col">First</th>
-    <th scope="col">Last</th>
-    <th scope="col">Handle</th>
+    <th scope="col">Position</th>
+    <th scope="col">First Name</th>
+    <th scope="col">Last Name</th>
+    <th scope="col">Club</th>
+    <th scope="col">Forecast</th>
   </tr>
 </thead>
 
   <tbody>
-  {% for number in range(0, athletes) %}
+  {% for x in range(0, athletes) %}
 
     <tr>
-      <th scope="row">1</th>
-      <td>Reiss</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row">{{x+1}}</th>
+      <td>{{Forecast[x]['fn']}}</td>
+      <td>{{Forecast[x]['ln']}}</td>
+      <td>{{Forecast[x]['cl']}}</td>
+      <td>{{Forecast[x]['rt']}}</td>
     </tr>
 
   {%endfor%}

@@ -1,5 +1,5 @@
 import unittest
-from MultipleAthletes import multipleathletes
+from MultipleAthletes import multipleathletes, athletelistfromform
 from AthleteAnalysis import rankathletes
 
 
@@ -55,3 +55,10 @@ class AthleticsTestCase (unittest.TestCase):
         self.assertEqual(len(Prediction), len(self.AthleteList))
         for x in range(0, len(self.AthleteList)-1):
             self.assertTrue(Prediction[x]['rt'] >= Prediction[x+1]['rt'], 'Field results in descending order.')
+
+    def test_athletelistfromforn(self):
+        fn = ['Sam', 'Reiss', 'Freya', 'Sam', 'Harry']
+        ln = ['Brockway', 'Jarvis', 'Coe', 'Jones', 'Richardson']
+        cl = ['Winchester', 'Southampton', 'Southampton', 'Southampton', 'Basingstoke']
+        Result = athletelistfromform(fn, ln, cl)
+        self.assertEqual(Result, self.AthleteList)

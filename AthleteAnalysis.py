@@ -19,7 +19,7 @@ def linearregression(results, pdate = date.today()):
     Data_X = []
     Data_Y = []
     if not results:
-        return 0
+        return 9999
 
     for n in range(0, len(results)):
         Data_X.append( [ results[n]['date'].toordinal() ] )
@@ -36,7 +36,7 @@ def ridgeregression(results, pdate = date.today()):
     Data_X = []
     Data_Y = []
     if not results:
-        return 0
+        return 9999
 
     for n in range(0, len(results)):
         Data_X.append( [ results[n]['date'].toordinal() ] )
@@ -53,7 +53,7 @@ def lassoregression(results, pdate = date.today()):
     Data_X = []
     Data_Y = []
     if not results:
-        return 0
+        return 9999
 
     for n in range(0, len(results)):
         Data_X.append( [ results[n]['date'].toordinal() ] )
@@ -70,7 +70,7 @@ def lassolarsregression(results, pdate = date.today()):
     Data_X = []
     Data_Y = []
     if not results:
-        return 0
+        return 9999
 
     for n in range(0, len(results)):
         Data_X.append( [ results[n]['date'].toordinal() ] )
@@ -87,7 +87,7 @@ def bayesianregression(results, pdate = date.today()):
     Data_X = []
     Data_Y = []
     if not results:
-        return 0
+        return 9999
 
     for n in range(0, len(results)):
         Data_X.append( [ results[n]['date'].toordinal() ] )

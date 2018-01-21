@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
-import json
+from MultipleAthletes import multipleathletes, athletelistfromform
+from AthleteAnalysis import rankathletes
 
 app = Flask(__name__)
 
@@ -10,11 +11,17 @@ def index():
 @app.route('/forecast', methods=['GET', 'POST'])
 def forecast():
     if request.method == 'POST':
-        app.logger.debug('request.form.event %s', request.form.get('event'))
-        app.logger.debug('request.form.fn %s', request.form.getlist('fn[]'))
-        app.logger.debug('request.form.ln %s', request.form.getlist('ln[]'))
-        app.logger.debug('request.form.cl %s', request.form.getlist('cl[]'))
+        NoDays = 365*2.5
+        event = request.form.get('event', '100')
+        fn = request.form.getlist('fn[]')
+        ln = request.form.getlist('ln[]')
+        cl = request.form.getlist('cl[]')
+        app.logger.debug('Form Event: %s FN: %s LN: %s CL: %s', event, fn, ln, cl)
+        AthleteList = athletelistfromform(fn, ln, cl)
+        Results = multipleathletes(event, AthleteList, NoDays)
+        Forecast = rankathletes(AthleteList, Results, event)
+        app.logger.debug('Forecast: %s', Forecast)
         #do_the_login()
-        return render_template('results.html', athletes=8)
+        return render_template('results.html', Forecast=Forecast, athletes=len(Forecast), event=event)
     else:
         return render_template('forecastform.html', athletes=8)
