@@ -30,6 +30,7 @@ Collecting scikit-learn
 Installing collected packages: scikit-learn
 Successfully installed scikit-learn-0.19.1
 
+How to run app in Flask
 pip3 install flask
 export FLASK_DEBUG=1
 export FLASK_APP=app.py
