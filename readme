@@ -29,3 +29,8 @@ Collecting scikit-learn
     100% |████████████████████████████████| 7.6MB 170kB/s
 Installing collected packages: scikit-learn
 Successfully installed scikit-learn-0.19.1
+
+pip3 install flask
+export FLASK_DEBUG=1
+export FLASK_APP=app.py
+flask run
