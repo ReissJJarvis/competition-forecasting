@@ -1,5 +1,12 @@
 {% extends "layout.html" %}
 {% block title %}Forecast Form{% endblock %}
+
+{% block header %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-6">Athletics Competition Forecasting</h1>
+  <p class="lead">Select an event and enter the name and club for one or more athletes. When done, press Forecast.</p>
+</div>
+{% endblock %}
 {% block content %}
     <form action="{{ url_for('forecast')}}" method="post">
       <div class="form-group row">

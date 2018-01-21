@@ -1,12 +1,17 @@
 {% extends "layout.html" %}
 {% block title %}Forecast Results{% endblock %}
+{% block header %}<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-6">Athletics Competition Forecasting</h1>
+  <p class="lead">Here is the forecasted results of the {{event}} event.</p>
+</div>
+{% endblock %}
 {% block content %}
+
 <table class="table">
 <thead class="thead-dark">
   <tr>
     <th scope="col">Position</th>
-    <th scope="col">First Name</th>
-    <th scope="col">Last Name</th>
+    <th scope="col">Name</th>
     <th scope="col">Club</th>
     <th scope="col">Forecast</th>
   </tr>
@@ -17,8 +22,10 @@
 
     <tr>
       <th scope="row">{{x+1}}</th>
-      <td>{{Forecast[x]['fn']}}</td>
-      <td>{{Forecast[x]['ln']}}</td>
+      <td>
+          {{Forecast[x]['fn']}}
+          {{Forecast[x]['ln']}}
+      </td>
       <td>{{Forecast[x]['cl']}}</td>
       <td>
           {% if 0 == Forecast[x]['rt'] %}
