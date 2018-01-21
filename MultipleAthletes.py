@@ -7,9 +7,15 @@ def multipleathletes (Event, AthleteList, NoDays = -1):
     ListOfResults = []
     for Athlete in AthleteList:
         AthleteID = fetchathlete(Athlete['fn'], Athlete['ln'], Athlete['cl'])
-        Results = fetchresults(Event, AthleteID, NoDays)
+        if AthleteID is not None:
+            Results = fetchresults(Event, AthleteID, NoDays)
+
     #Compile all results
-        ListOfResults.append(Results)
+            ListOfResults.append(Results)
+
+        else:
+            ListOfResults.append([])
+
     #Return the results
     return ListOfResults
 

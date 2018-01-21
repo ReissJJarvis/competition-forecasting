@@ -20,10 +20,22 @@
       <td>{{Forecast[x]['fn']}}</td>
       <td>{{Forecast[x]['ln']}}</td>
       <td>{{Forecast[x]['cl']}}</td>
-      <td>{{Forecast[x]['rt']}}</td>
+      <td>
+          {% if 0 == Forecast[x]['rt'] %}
+            N/A
+          {% else %}
+            {{ Forecast[x]['rt'] }}
+          {% endif %}
+      </td>
     </tr>
 
   {%endfor%}
   </tbody>
   </table>
+
+  <div class="row">
+    <div class="col-md-2 offset-md-10">
+    <a class="btn btn-primary btn-block" href="{{ url_for('forecast')}}" role="button">Go back</a>
+    </div>
+  </div>
 {% endblock %}

@@ -3,7 +3,7 @@
 {% block content %}
     <form action="{{ url_for('forecast')}}" method="post">
       <div class="form-group row">
-        <div class="col-9">
+        <div class="col-md-8 col-8">
           <select class="custom-select" name="event">
             <option selected>Choose an event</option>
             <option value="100">100m</option>
@@ -25,9 +25,7 @@
             <option value="TJ">Triple Jump</option>
           </select>
         </div>
-        <div class="col-1">
-        </div>
-        <div class="col">
+        <div class="col-md-2 offset-md-2 col-4">
           <button type="submit" class="btn btn-primary btn-block">Forecast</button>
 
         </div>
@@ -51,5 +49,5 @@
 
       {%endfor%}
 
-    </div>
+
 {% endblock %}

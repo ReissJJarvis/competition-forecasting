@@ -62,3 +62,15 @@ class AthleticsTestCase (unittest.TestCase):
         cl = ['Winchester', 'Southampton', 'Southampton', 'Southampton', 'Basingstoke']
         Result = athletelistfromform(fn, ln, cl)
         self.assertEqual(Result, self.AthleteList)
+
+    def test_invalidathlete(self):
+        Event = 'HJ'
+        UnknownAthlete = [{
+            'fn': 'zzzz',
+            'ln': 'zzzz',
+            'cl': 'Wizzchester'
+        }]
+        Results = multipleathletes(Event, UnknownAthlete)
+        Prediction = rankathletes(UnknownAthlete, Results, Event)
+
+        self.assertEqual(len(Prediction), len(UnknownAthlete))
