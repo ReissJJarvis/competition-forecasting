@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block title %}Forecast Form{% endblock %}
+{% block content %}
+    <form action="{{ url_for('forecast')}}" method="post">
+      <div class="form-group row">
+        <div class="col-9">
+          <select class="custom-select" name="event">
+            <option selected>Choose an event</option>
+            <option value="100">100m</option>
+            <option value="200">200m</option>
+            <option value="300">300m</option>
+            <option value="400">400m</option>
+            <option value="800">800m</option>
+            <option value="1500">1500m</option>
+            <option value="3000">3000m</option>
+            <option value="5000">5000m</option>
+            <option value="10000">10000m</option>
+            <option value="3000SC">3000m Steeple Chase</option>
+            <option value="60H">60m Hurdles</option>
+            <option value="100H">100m Hurdles</option>
+            <option value="110H">110m Hurdles</option>
+            <option value="400H">400m Hurdles</option>
+            <option value="HJ">High Jump</option>
+            <option value="LJ">Long Jump</option>
+            <option value="TJ">Triple Jump</option>
+          </select>
+        </div>
+        <div class="col-1">
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary btn-block">Forecast</button>
+
+        </div>
+
+    </div> <!--End of row containing event drop down and button -->
+
+
+    {% for number in range(0, athletes) %}
+
+      <div class="form-group row">
+        <div class="col">
+          <input type="text" class="form-control" name="fn[]" placeholder="First name">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" name="ln[]" placeholder="Last name">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" name="cl[]" placeholder="Club">
+        </div>
+      </div>
+
+      {%endfor%}
+
+    </div>
+{% endblock %}

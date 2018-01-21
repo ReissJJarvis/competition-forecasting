@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %}Forecast Results{% endblock %}
+{% block content %}
+<table class="table">
+<thead class="thead-dark">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">First</th>
+    <th scope="col">Last</th>
+    <th scope="col">Handle</th>
+  </tr>
+</thead>
+
+  <tbody>
+  {% for number in range(0, athletes) %}
+
+    <tr>
+      <th scope="row">1</th>
+      <td>Reiss</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+
+  {%endfor%}
+  </tbody>
+  </table>
+{% endblock %}
