@@ -19,7 +19,7 @@ class AthleticsTestCase (unittest.TestCase):
         #Predict next result using ridge
         Prediction = ridgeregression(Results)
         #Check the prediction
-        print('Ridge:', Prediction)
+        #print('Ridge:', Prediction)
         #self.assertEqual(Prediction, '50.0')
 
 
@@ -34,7 +34,7 @@ class AthleticsTestCase (unittest.TestCase):
         #Predict next result using ridge
         Prediction = linearregression(Results)
         #Check the prediction
-        print('Linear:' , Prediction)
+        #print('Linear:' , Prediction)
         #self.assertEqual(Prediction, '50.0')
 
     def test_lasso(self):
@@ -47,7 +47,7 @@ class AthleticsTestCase (unittest.TestCase):
         #Predict next result using ridge
         Prediction = lassoregression(Results)
         #Check the prediction
-        print('Lasso:' , Prediction)
+        #print('Lasso:' , Prediction)
         #self.assertEqual(Prediction, '50.0')
 
     def test_lassolars(self):
@@ -60,7 +60,7 @@ class AthleticsTestCase (unittest.TestCase):
         #Predict next result using ridge
         Prediction = lassolarsregression(Results)
         #Check the prediction
-        print('LassoLars:' , Prediction)
+        #print('LassoLars:' , Prediction)
         #self.assertEqual(Prediction, '50.0')
 
 
@@ -84,7 +84,7 @@ class AthleticsTestCase (unittest.TestCase):
             Predictions.append(lassolarsregression(OtherResults, MostRecentResult['date']))
             Predictions.append(bayesianregression(OtherResults, MostRecentResult['date']))
             #Check the prediction
-            print('Effectiveness:', self.Athletes[x], Predictions, MostRecentResult['performance'], Predictions[0] - MostRecentResult['performance'], MostRecentResult['date'])
-            print('Distance from true value:', Predictions[0] - MostRecentResult['performance'], Predictions[4] - MostRecentResult['performance'])
-            print()
+            #print('Effectiveness:', self.Athletes[x], Predictions, MostRecentResult['performance'], Predictions[0] - MostRecentResult['performance'], MostRecentResult['date'])
+            #print('Distance from true value:', Predictions[0] - MostRecentResult['performance'], Predictions[4] - MostRecentResult['performance'])
+            #print()
             #self.assertEqual(Prediction, '50.0')

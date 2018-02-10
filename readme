@@ -35,3 +35,5 @@ pip3 install flask
 export FLASK_DEBUG=1
 export FLASK_APP=app.py
 flask run
+
+pip3 install requests

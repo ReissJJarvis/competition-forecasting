@@ -3,7 +3,7 @@ from AthleteLookup import fetchathlete
 from AthletePerformances import fetchresults
 
 class AthleticsTestCase (unittest.TestCase):
-    #@unittest.skip("testing Lynden")
+    #See if the athlete page found is the same as the desired athlete page
     def test_fetchathlete(self):
         result = fetchathlete('Freya','Coe','Southampton')
         self.assertEqual('profile.aspx?athleteid=449292',result, 'Error on Freya')
@@ -16,12 +16,14 @@ class AthleticsTestCase (unittest.TestCase):
         result = fetchathlete('Owen','Richardson','Basingstoke')
         self.assertEqual('profile.aspx?athleteid=119822',result, 'Error on Owen')
 
-    #@unittest.skip("testing Lynden")
+
     def test_Lynden(self):
+        #Input a user with a unique name
         result = fetchathlete('Lynden','Olowe','Southampton')
         self.assertEqual('profile.aspx?athleteid=377028',result, 'Error on Lynden')
 
     def test_sam(self):
+        #Input a user without a unique name.
         athlete = fetchathlete('Sam','Jones','Southampton')
         self.assertEqual('profile.aspx?athleteid=538019',athlete)
         result = fetchresults('100',athlete)
@@ -31,6 +33,7 @@ class AthleticsTestCase (unittest.TestCase):
         self.assertEqual(FirstRow['event'], '100')
 
     def test_wrongclub(self):
+        #Input a user with the incorrect club.
         athlete = fetchathlete('Reiss','Jarvis','Timbucktoo')
         self.assertIsNone(athlete)
         #result = fetchresults('100',athlete)
@@ -39,8 +42,8 @@ class AthleticsTestCase (unittest.TestCase):
         #FirstRow = result[0]
         #self.assertEqual(FirstRow['event'], '100')
 
-    #@unittest.skip("testing Lynden")
     def test_fetchresults(self):
+        #Test if the program can fetch the results.
         athlete = fetchathlete('Freya','Coe','Southampton')
         self.assertEqual('profile.aspx?athleteid=449292',athlete)
         result = fetchresults('400',athlete)
