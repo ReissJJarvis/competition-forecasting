@@ -1,6 +1,7 @@
 from EventUnits import isTimedEvent
 from sklearn import datasets, linear_model
 from datetime import date, datetime
+from MergeSort import ResultsSort
 import warnings
 
 
@@ -104,17 +105,13 @@ def rankathletes(athletes, results, event):
     #Calculate predicted Results for each athlete
     for n in range(0, len(athletes)):
         athletes[n]['rt'] = predictresult(results[n])
-        if athletes[n]['rt'] == 0:
-            athletes[n]['score'] = 100
-        else:
-            athletes[n]['score'] = 0
 
         #athletes[n].append({'rt' : predictresult(Results[n])})
 
         #print(athletes[n])
     #Sort in order of best to worst (track events lowest number to highest, field events highest to lowest)
-    FirstSort = sorted(athletes, key=lambda athlete : athlete['rt'], reverse = not isTimedEvent(event))
-    PredictedOutcome = sorted(FirstSort, key=lambda athlete : athlete['score'])
+    #FirstSort = sorted(athletes, key=lambda athlete : athlete['rt'], reverse = not isTimedEvent(event))
+    PredictedOutcome = ResultsSort(athletes, isTimedEvent(event))
     #print position, name, and predicted performance
     #for n in range(0, len(athletes)):
     #    print(str(n+1), athletes[n])
